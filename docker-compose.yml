@@ -1,5 +1,5 @@
 web:
-  build: .
+  image: pdxjohnny/pics
   ports:
     - "25000:25000"
   volumes:

@@ -16,12 +16,17 @@ func Form(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	w.Write([]byte(`<html>
 <head>
-    <title>Upload file</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Photos</title>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Upload file</title>
 </head>
 <body>
 <form enctype="multipart/form-data" action="/upload" method="post">
-      <input type="file" name="file" />
-      <input type="submit" value="upload" />
+  <input type="file" name="file" />
+  <input type="submit" value="upload" />
 </form>
 </body>
 </html>`))
@@ -54,7 +59,8 @@ func Upload(w http.ResponseWriter, req *http.Request) {
 	defer serverFile.Close()
 
 	io.Copy(serverFile, uploadedFile)
-	fmt.Fprintf(w, "OK")
+	w.Header().Set("Content-Type", "text/html")
+	fmt.Fprintf(w, `<meta http-equiv="refresh" content="0;URL=/">`)
 }
 
 func All(w http.ResponseWriter, req *http.Request) {
