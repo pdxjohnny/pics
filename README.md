@@ -1,7 +1,9 @@
-Docker Go Base
+Pics
 ---
 
-This repo is meant to be used as a starting point for go projects
+Use this project to share a slideshow of pictures. Pictures can also be uploaded
+by visiting /add. docker-compose will mount static/pics as the directory of the
+pictures for the slideshow.
 
 It uses docker to compile the binaries and the main Dockerfile adds the linux
 binary to the busybox image to create an extremely small final image
