@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"io"
 	"io/ioutil"
 
 	"github.com/spf13/viper"
@@ -52,11 +53,7 @@ func Upload(w http.ResponseWriter, req *http.Request) {
 	}
 	defer serverFile.Close()
 
-	if !Check(uploadedFile) {
-		fmt.Fprintf(w, "ERROR")
-		return
-	}
-	// io.Copy(serverFile, uploadedFile)
+	io.Copy(serverFile, uploadedFile)
 	fmt.Fprintf(w, "OK")
 }
 
