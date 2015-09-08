@@ -1,0 +1,11 @@
+Godeps/_workspace
+Godeps/Readme
+build/
+keys/
+tmp/
+
+static/pics/
+
+bower_components/
+
+pics_*

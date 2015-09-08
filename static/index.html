@@ -1,0 +1,42 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Photos</title>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- JS -->
+  <script src="jquery-1.9.1.min.js"></script>
+  <script src="jssor.slider.min.js"></script>
+</head>
+<script>
+$(document).ready(function () {
+  var div = $("#slider1_container")[0];
+  div.style.position = 'absolute';
+  div.style.top = '0px';
+  div.style.left = '0px';
+  div.style.width = window.innerWidth;
+  div.style.height = window.innerHeight;
+  div.width = window.innerWidth;
+  div.height = window.innerHeight;
+  $("#slides")[0].style.width = window.innerWidth;
+  $("#slides")[0].style.height = window.innerHeight;
+  $.get("all", function (data) {
+    for (var i = 0; i < data.length; i++) {
+      var add = "<div><img u=\"image\" src=\"pics/" + data[i] + "\" /></div>";
+      $("#slides").html($("#slides").html() + add);
+    }
+    var options = {
+      $AutoPlay: true,
+      $FillMode: 3,
+      $SlideWidth: window.innerWidth,
+      $SlideHeight: window.innerHeight
+    };
+    var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+  });
+});
+</script>
+<div id="slider1_container" style="position: absolute; top: 0px; left: 0px;">
+  <!-- Slides Container -->
+  <div id="slides" u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px;">
+  </div>
+</div>
