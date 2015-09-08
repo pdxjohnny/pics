@@ -1,0 +1,8 @@
+web:
+  build: .
+  ports:
+    - "25000:25000"
+  volumes:
+    - "${PWD}/keys:/pics/keys"
+    - "${PWD}/static/pics:/pics/static/pics"
+  command: /pics/run server
